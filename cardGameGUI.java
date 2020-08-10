@@ -1,7 +1,10 @@
+import java.awt.BorderLayout;
+import java.io.IOException;
+import java.awt.Component;
 import java.awt.GridLayout;
 import java.awt.event.*;
+import java.awt.image.BufferedImage;
 import java.io.File;
-import java.io.IOException;
 
 import javax.imageio.ImageIO;
 import javax.swing.BorderFactory;
@@ -38,9 +41,10 @@ public class cardGameGUI implements ItemListener, ActionListener {
 
     public cardGameGUI() throws IOException {
 
-
+        //frame
         window = new JFrame("Card Game");
-
+        
+        //gameContainer
         gameContainer = new JPanel(new GridLayout(3, 3, 10, 10));
 
         // game info
@@ -104,15 +108,11 @@ public class cardGameGUI implements ItemListener, ActionListener {
 
         if (currentCard == null)
             return;
-        //set image to current card
+        //sets the image to current card
         if (cardsLeft > 0)
             cardImg.setImage(currentCard.getCardImage());
 
-        //this was for testing
-        System.out.println(currentCard.toString());
-        System.out.println(combinedGuess);
 
-        //checks the dropdowns to the currentcard
         if (combinedGuess.equalsIgnoreCase(currentCard.toString()))
             wins++;
 
@@ -134,7 +134,7 @@ public class cardGameGUI implements ItemListener, ActionListener {
         //change if dropdown is used
         if(source == ranks)
             rankGuess = ranks.getSelectedItem().toString();
-        //make combinedguess equal to new variables
+        //makes combinedguess equal to new variables
         combinedGuess = rankGuess + " of " + suitGuess;
     }
 }
