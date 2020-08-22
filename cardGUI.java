@@ -40,7 +40,7 @@ public class cardGUI implements ItemListener, ActionListener {
 
   public cardGUI() throws IOException {
     
-    // Frame creation
+    // frame creation
     window = new JFrame("Card Game");
 
     // gameContainer creation
@@ -63,7 +63,7 @@ public class cardGUI implements ItemListener, ActionListener {
     rankGuess = ranks.getSelectedItem().toString();
     combinedGuess = rankGuess + " of " + suitGuess;
 
-    // Instructions for game
+    // instructions for game
     dropDownText = new JTextArea("Guess the next card from the suit and rank selection");
     dropDownText.setEditable(false);
 
@@ -73,12 +73,12 @@ public class cardGUI implements ItemListener, ActionListener {
     dropDownContainer.add(new JLabel("of", JLabel.CENTER));
     dropDownContainer.add(suits);
 
-    // set card pictures
+    // set card imgs
     cardBack = new ImageIcon(ImageIO.read(new File("cards/b.gif")));
     cardImg = new ImageIcon();
     imgHolder = new JLabel(cardImg);
     
-    // made button to guess
+    // button to guess
     buttonGo = new JButton("Click me to guess");
     buttonGo.addActionListener(this);
 
@@ -86,7 +86,7 @@ public class cardGUI implements ItemListener, ActionListener {
     window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     window.add(gameContainer);
 
-    //make game container grid and add components
+    // game container grid, add components
     gameContainer.setBorder(BorderFactory.createEmptyBorder(50, 50, 50, 50));
     gameContainer.add(new JLabel(cardBack));
     gameContainer.add(imgHolder);
@@ -100,7 +100,7 @@ public class cardGUI implements ItemListener, ActionListener {
     window.setVisible(true);
   }
 
-  // make sure all cards work
+  
   private void printEntireDeck() {
     int n = 0;
     for (card c : deckOfCards.deck) {
@@ -118,11 +118,11 @@ public class cardGUI implements ItemListener, ActionListener {
 
     if (currentCard == null)
       return;
-    //set image to current card
+    //set img to current card
     if (cardsLeft > 0)
       cardImg.setImage(currentCard.getCardImage());
 
-    //this was for testing
+    //testing
     System.out.println(currentCard.toString());
     System.out.println(combinedGuess);
 
@@ -130,7 +130,7 @@ public class cardGUI implements ItemListener, ActionListener {
     if (combinedGuess.equalsIgnoreCase(currentCard.toString()))
       wins++;
 
-    // refresh the label to change the image
+    // refresh the label to change img
     imgHolder.repaint();
 
     cardsLeft--;
